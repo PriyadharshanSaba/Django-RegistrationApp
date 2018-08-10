@@ -11,6 +11,5 @@ urlpatterns = [
     url(r'^exists',views.bib_exists, name = "exists"),
     url(r'^bib_edit',views.bib_edit, name = "edit"),
     url(r'^details_data',views.details_data, name = "details_pass"),
-
-
+    url(r'^pdf',views.myview, name = "pdf")
 ]

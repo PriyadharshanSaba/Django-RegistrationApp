@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'registration_form',
-    'import_export'
+    'import_export',
+    'easy_pdf'
 ]
 
 MIDDLEWARE = [

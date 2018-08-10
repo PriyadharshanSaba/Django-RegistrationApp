@@ -10,6 +10,13 @@ import csv
 from random import randint
 from .render import Render
 from django.views.generic import View
+from io import StringIO
+from xhtml2pdf import pisa
+from django.template.loader import get_template
+from django.template import Context
+from django.http import HttpResponse
+from cgi import escape
+from django.template.loader import render_to_string
 
 
 @csrf_exempt
@@ -31,8 +38,31 @@ def register(request):
 
     return render(request, "registration_form/register.html", {'forms': form})
 
-def bib_update(request):
 
+def render_to_pdf(template_src, context_dict):
+    template = get_template(template_src)
+    context = Context(context_dict)
+    html  = template.render(context)
+    #result = StringIO.StringIO()
+    result = io.BytesIO()
+
+    pdf = pisa.pisaDocument(io.BytesIO(html.encode("ISO-8859-1")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
+
+def myview(request):
+    results = "<h1 style='align:center;'>Hi</h1>"
+    return render_to_pdf(
+                         'line_chart.html',
+                         {
+                         'pagesize':'A4',
+                         'mylist': results,
+                         }
+                         )
+
+
+def bib_update(request):
     if request.method == "POST":
         form = Bib_form(request.POST)
 
@@ -41,11 +71,8 @@ def bib_update(request):
         if form.is_valid():
             Register.objects.filter(phno=form.data['phno']).filter(emailid=form.data['emailid']).update(bibno=form.data['bibno'])
             return render(request, "registration_form/bibupdate.html", {'forms': form,'success_reg' : "Bib successfully allocated! See you on the race day!"})
-
     else:
-
         form = Bib_form()
-
     return render(request, "registration_form/bibupdate.html", {'forms': form})
 
 
