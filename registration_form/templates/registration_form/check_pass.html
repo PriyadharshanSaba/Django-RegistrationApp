@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<DOCTYPE html>
+<html>
+<head>
+    <SCRIPT LANGUAGE="JavaScript">
+    function checkPass() {
+      var passwd;
+      passwd = document.getElementById('pass').value;
+      if(passwd=="pass12345"){
+      window.open('details_data','_self',false)
+      }
+      else{
+      alert('Password wrong');
+      }
+    }
+    </SCRIPT>
+
+<title>Details</title>
+</head>
+<body>
+    Enter Password to view the details : <br>
+<input type="password" id="pass" placeholder="Enter Password"/><br>
+<input type="button" value="Enter" onClick="checkPass()" class="btn btn-primary"/></a>
+</body>
+</html>

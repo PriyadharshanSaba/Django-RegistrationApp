@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Updation{% endblock %}</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Updation</h1>
+      This Phone number/Username already exists.
+    </header>
+    <br>
+    <br>
+    <h3> Existing entries : </h3>
+    <div class="container">
+  <table class = "table">
+    <thead>
+
+  <tr>
+    <th>Full Name</th>
+    <th>Email</th>
+    <th>phone number</th>
+    <th>Previous Runs</th>
+    <th>Tee Size</th>
+    <th>Gender</th>
+    <th>Location</th>
+    <th>Date of birth</th>
+    <th>Bib number </th>
+    <th>Edit</th>
+  </tr>
+  </thead>
+  {% for b in obj %}
+  <tbody>
+  <tr>
+    <td>{{ b.username }}</td>
+    <td>{{ b.emailid }}</td>
+    <td>{{ b.phno }}</td>
+    <td>{{ b.prevruns }}</td>
+    <td>{{ b.teesize }}</td>
+    <td>{{ b.gender}}</td>
+    <td>{{ b.location }}</td>
+    <td>{{ b.dob }}</td>
+    <td>{{ b.bibno }}</td>
+    <td><a href="/register/bib_update">Edit</a>
+  </tr>
+  </tbody>
+  {% endfor %}
+  </table>
+  </div>
+  </body>
+</html>

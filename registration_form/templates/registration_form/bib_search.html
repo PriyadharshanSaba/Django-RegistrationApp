@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<DOCTYPE html>
+<html>
+<head>
+    <SCRIPT LANGUAGE="JavaScript">
+    function checkPass() {
+      var passwd;
+      passwd = document.getElementById('pass').value;
+      if(passwd=="pass12345"){
+      window.open('bib_update','_self',false)
+      }
+      else{
+      alert('Password wrong');
+      }
+    }
+    </SCRIPT>
+
+<title>Bib Search</title>
+</head>
+<body>
+<div class="offset-3 col-md-6">
+<form method="get">
+{% csrf_token %}
+<center> <h1>Bib Search</h1></center>
+<br>
+<center>{{forms.phno}}</center>
+<br>
+<center>{{forms.emailid}}</center>
+<br>
+<center><button type="submit" class="btn btn-primary">Search</button></center><br>
+</form>
+
+{% block content %}
+<center>
+<div class="container">
+<table class = "table">
+
+{% for b in obj %}
+
+<tbody>
+<tr>
+<td>{{ b.fullname }}</td>
+<td>{{ b.emailid }}</td>
+<td>{{ b.phno }}</td>
+<td>{{ b.dob }}</td>
+<td>{{ b.bibno }}</td>
+<td><input type="password" id="pass" placeholder="Enter Password"/>
+<td><input type="button" value="Edit" onClick="checkPass()" class="btn btn-primary"/></a></td>
+</tr>
+</tbody>
+{% endfor %}
+</table>
+</div>
+</center>
+{% endblock %}
+{{ message }}
+</div>
+</body>
+</html>

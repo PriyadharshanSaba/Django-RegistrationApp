@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<DOCTYPE html>
+<html>
+<head>
+<title>Bib Allocation</title>
+</head>
+<body>
+<div class="offset-3 col-md-6">
+<form method="post">
+{% csrf_token %}
+<center> <h1>Bib Update </h1></center>
+<br>
+<center>{{forms.fullname}}</center>
+<br>
+<center>{{forms.emailid}}</center>
+<br>
+<center>{{forms.phno}}</center>
+<br>
+<center>{{forms.bibno}}</center>
+<br>
+<center><button type="submit" class="btn btn-primary">Submit</button></center><br>
+{{success_reg}}
+
+</form>
+</div>
+</body>
+</html>

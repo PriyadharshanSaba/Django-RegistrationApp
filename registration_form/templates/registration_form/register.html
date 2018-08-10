@@ -1,0 +1,73 @@
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous"><DOCTYPE html>
+<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+<html>
+<head>
+<title>Registration</title>
+</head>
+<body>
+    <div class = "custom-font">
+    <div style="background-color:2d2e36">
+    <div class="col-sm-9 mx-auto p-4">
+    <div class="card border-dark">
+        <div style="background-color:27272f">
+  <div class="card-header text-white">
+    <center><h1>REGISTRATION</h1></center>
+  </div>
+</div>
+  <div style="background-color:27272f">
+  <div class="card-body text-white">
+      <div class = "float-md-right" style = "padding:12% 0">
+          <img src="{% static "logo.png" %}" alt="Logo" width="400" height="400"/>
+      </div>
+<div class = "p-3 col-md-6">
+<form method="post" role = "form">
+{% csrf_token %}
+PHONE NUMBER:
+{{forms.phno}}
+<br>
+USERNAME:
+{{forms.fullname}}
+<br>
+GENDER:<br><center>
+<span style="padding-right:30px;"><input type="radio" name="gender" value ="m"> MALE</input></span>
+<span style="padding-right:30px;"><input type="radio" name="gender" value ="f"> FEMALE</input></span>
+<span style="padding-right:30px;"><input type="radio" name="gender" value ="o"> OTHER</input><br></span></center>
+<br>
+EMAIL-ID:
+{{forms.emailid}}
+<br>
+LOCATION:
+{{forms.location}}
+<br>
+T-SHIRT SIZE:<br><center>
+<span style="padding-right:10px;"><input type="radio" name="teesize" value ="xs">XS</input></span>
+<span style="padding-right:10px;"><input type="radio" name="teesize" value ="s"> S</input></span>
+<span style="padding-right:10px;"><input type="radio" name="teesize" value ="m"> M</input></span>
+<span style="padding-right:10px;"><input type="radio" name="teesize" value ="l"> L</input></span>
+<span style="padding-right:10px;"><input type="radio" name="teesize" value ="xl"> XL</input><br></span></center>
+<br>
+PREVIOUS RUNS:<br><center>
+<span style="padding-right:10px;"><input type="radio" name="expr" value ="beg">Beginner(0-5 runs)</input></span><br>
+<span style="padding-right:10px;"><input type="radio" name="expr" value ="inter">Intermediate(6-10 runs)</input></span><br>
+<span style="padding-right:10px;"><input type="radio" name="expr" value ="pro">Professional(10+ runs)</input><br></span></center>
+<br>
+DATE OF BIRTH:
+{{forms.dob}}
+<br>
+</div>
+</div>
+<div style="background-color:27272f">
+  <div class="card-footer">
+<center><button type="submit" class="btn btn-success">Submit</button></center>
+<font color="red"><b>{{ success_reg }}</b></font>
+</div>
+</div>
+</div>
+</form>
+</div>
+  </div>
+</div>
+</div>
+</body>
+</html>
